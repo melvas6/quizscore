@@ -15,18 +15,18 @@ div{
     margin-bottom: 7px;
 }
 main div:first-child{
-    background-color: #EF502A;
+    background-color: #00FF00;
     margin-right: 1.5%;
 }
 main div:nth-child(2){
-    background-color: #215A63;
+    background-color: #FF0000;
 }
 main div:nth-child(3){
-    background-color: #56088a;
+    background-color: #FFD700;
     margin-right: 1.5%;
 }
 main div:nth-child(4){
-    background-color: #c9f354;
+    background-color: #00FF00;
 }
 body{
     background-color: #151515;
