@@ -15,7 +15,7 @@ div{
     margin-bottom: 7px;
 }
 main div:first-child{
-    background-color: #00FF00;
+    background-color: #0000FF;
     margin-right: 1.5%;
 }
 main div:nth-child(2){
