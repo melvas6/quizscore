@@ -13,7 +13,6 @@ body {
 
 main {
     display: grid;
-    grid-auto-flow: dense;
     gap: 16px;
     padding: 16px;
     height: calc(100vh - 80px);
@@ -71,10 +70,12 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid #3d3d3d;
     transition: border-color 0.2s;
+    cursor: default;
 }
 
 input:focus {
     border-bottom-color: #00d26a;
+    cursor: text;
 }
 
 input::placeholder {
@@ -89,42 +90,54 @@ input::placeholder {
     font-weight: 700;
     line-height: 1;
     margin: 20px 0;
+    display: block;
 }
 
-.edit-controls {
-    display: none;
+nav {
+    display: flex;
     flex-wrap: wrap;
     gap: 8px;
     justify-content: center;
     padding-top: 15px;
     border-top: 1px solid #3d3d3d;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
-.edit-controls.visible {
-    display: flex;
+nav.visible {
+    visibility: visible;
+    opacity: 1;
 }
 
-button.score-btn {
+em {
+    font-style: normal;
+    font-size: 14px;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
     background-color: #3d3d3d;
     color: #00d26a;
     border: 1px solid #00d26a;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 2px;
     font-weight: 600;
+    user-select: none;
     cursor: pointer;
     transition: all 0.2s;
     flex: 1;
     min-width: 50px;
 }
 
-button.score-btn:hover {
+em:hover {
     background-color: #00d26a;
     color: #1a1a1a;
+    transform: translateY(-2px);
 }
 
-button.score-btn:active {
-    transform: scale(0.95);
+em:active {
+    transform: translateY(0);
 }
 
 .unlock-btn {
