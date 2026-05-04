@@ -100,14 +100,17 @@ nav {
     justify-content: center;
     padding-top: 15px;
     border-top: 1px solid #3d3d3d;
-    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.3s, opacity 0.3s, pointer-events 0.3s;
     opacity: 0;
-    transition: opacity 0.3s, visibility 0.3s;
 }
 
 nav.visible {
-    visibility: visible;
+    max-height: 100px;
     opacity: 1;
+    pointer-events: auto;
 }
 
 em {

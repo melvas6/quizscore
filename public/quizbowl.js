@@ -8,12 +8,8 @@ $(document).ready(function() {
         handleUnlock();
     });
     
-    // Setup score button listeners
-    attachScoreButtonListeners();
-});
-
-function attachScoreButtonListeners() {
-    $("nav em").off("click").on("click", function(e) {
+    // Setup score button listeners using event delegation
+    $(document).on("click", "nav em", function(e) {
         if (!isEditMode) return;
         
         e.stopPropagation();
@@ -44,7 +40,7 @@ function attachScoreButtonListeners() {
             console.error("Error updating score: ", error);
         });
     });
-}
+});
 
 function handleUnlock() {
     const password = prompt("Enter password to unlock edit mode:");
@@ -52,7 +48,8 @@ function handleUnlock() {
     if (password === ADMIN_PASSWORD) {
         isEditMode = true;
         $("#unlock-btn").addClass("hidden");
-        $(".edit-controls").addClass("visible");
+        $("nav").addClass("visible");
+        alert("Edit mode unlocked! You can now click the buttons to update scores.");
     } else if (password !== null) {
         alert("Incorrect password. Try again.");
     }
