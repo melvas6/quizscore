@@ -19,6 +19,12 @@ $(document).ready(function() {
         const currentScore = parseInt(scoreSpan.text());
         const newScore = currentScore + value;
         
+        // Get the team ID from input data attribute
+        const teamId = groupCard.find(".team-name").data("team");
+        
+        // Record history before updating score
+        recordHistory(teamId, currentScore, newScore, value);
+        
         // Update score display with animation
         scoreSpan.prop('Counter', currentScore).animate({
             Counter: newScore
@@ -30,9 +36,6 @@ $(document).ready(function() {
             }
         });
         
-        // Get the team ID from input data attribute
-        const teamId = groupCard.find(".team-name").data("team");
-        
         // Update Firestore
         dbRef.update({
             [teamId]: newScore
@@ -41,6 +44,25 @@ $(document).ready(function() {
         });
     });
 });
+
+function recordHistory(teamId, previousScore, newScore, changeAmount) {
+    const timestamp = new Date();
+    
+    // Create history document reference
+    const historyRef = db.collection("quiz").doc("inigo").collection("history").doc();
+    
+    // Save history record
+    historyRef.set({
+        teamId: teamId,
+        previousScore: previousScore,
+        newScore: newScore,
+        changeAmount: changeAmount,
+        timestamp: timestamp,
+        formattedTime: timestamp.toLocaleString()
+    }).catch((error) => {
+        console.error("Error recording history: ", error);
+    });
+}
 
 function handleUnlock() {
     const password = prompt("Enter password to unlock edit mode:");
