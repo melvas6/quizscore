@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Website Viewer</title>
+  <link rel="stylesheet" href="content.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="toolbar">
+      <div class="title">
+        <strong>Live Website Viewer</strong>
+        <span>Showing your Firebase quiz site inside the slide</span>
+      </div>
+
+      <div class="controls">
+        <input
+          id="urlInput"
+          type="url"
+          spellcheck="false"
+          value="https://vue-chat-7c2c5.web.app/"
+        />
+        <button id="loadBtn" type="button">Load</button>
+        <button id="reloadBtn" type="button">Reload</button>
+        <button id="openBtn" type="button">Open</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div id="status" class="status">Ready.</div>
+
+      <iframe
+        id="viewer"
+        title="Live website"
+        referrerpolicy="no-referrer"
+        sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </main>
+
+    <footer class="footer">
+      If the page is blank, the website is probably blocking embedding.
+    </footer>
+  </div>
+
+  <script src="content.js"></script>
+</body>
+</html>
